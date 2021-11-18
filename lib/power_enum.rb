@@ -16,12 +16,10 @@ class PowerEnum < Rails::Engine
   initializer 'power_enum' do
     ActiveSupport.on_load(:active_record) do
       Rails.application.reloader.to_prepare do
-        PowerEnum::Enumerated
+        include PowerEnum::Enumerated
+        include PowerEnum::HasEnumerated
       end
       
-      include PowerEnum::Enumerated
-      include PowerEnum::HasEnumerated
-
       ActiveRecord::Base.module_eval do
         class << self
           prepend ::PowerEnum::Reflection
