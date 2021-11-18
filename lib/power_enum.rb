@@ -10,7 +10,7 @@ require 'testing/rspec'
 # analytics or reporting.
 class PowerEnum < Rails::Engine
 
-  #config.autoload_paths << File.expand_path(File.join(__FILE__, "../"))
+  config.autoload_paths << File.expand_path(File.join(__FILE__, "../"))
 
 
   initializer 'power_enum' do
