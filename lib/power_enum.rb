@@ -18,6 +18,7 @@ class PowerEnum < Rails::Engine
       Rails.application.reloader.to_prepare do
         include PowerEnum::Enumerated
         include PowerEnum::HasEnumerated
+        include ::PowerEnum::Reflection
       end
       
       ActiveRecord::Base.module_eval do
