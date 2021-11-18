@@ -22,7 +22,9 @@ class PowerEnum < Rails::Engine
       
       ActiveRecord::Base.module_eval do
         class << self
-          prepend ::PowerEnum::Reflection
+          Rails.application.reloader.to_prepare do
+            prepend ::PowerEnum::Reflection
+          end
         end
       end
 
