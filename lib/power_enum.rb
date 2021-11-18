@@ -27,11 +27,15 @@ class PowerEnum < Rails::Engine
       end
 
       ActiveRecord::ConnectionAdapters.module_eval do
-        include PowerEnum::Schema::SchemaStatements
+              Rails.application.reloader.to_prepare do        
+                include PowerEnum::Schema::SchemaStatements
+              end
       end
 
       ActiveRecord::Migration::CommandRecorder.class_eval do
-        include PowerEnum::Migration::CommandRecorder
+        Rails.application.reloader.to_prepare do
+          include PowerEnum::Migration::CommandRecorder
+        end
       end
     end
 
