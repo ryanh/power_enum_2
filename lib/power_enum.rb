@@ -27,7 +27,6 @@ class PowerEnum < Rails::Engine
         end
       end
 
-
       ActiveRecord::ConnectionAdapters.module_eval do
               Rails.application.reloader.to_prepare do        
                 include PowerEnum::Schema::SchemaStatements
