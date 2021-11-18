@@ -15,6 +15,10 @@ class PowerEnum < Rails::Engine
 
   initializer 'power_enum' do
     ActiveSupport.on_load(:active_record) do
+      Rails.application.reloader.to_prepare do
+        PowerEnum::Enumerated
+      end
+      
       include PowerEnum::Enumerated
       include PowerEnum::HasEnumerated
 
